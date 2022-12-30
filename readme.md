@@ -11,7 +11,7 @@ Therefore I have developed this containerized application, consisting of an etl-
 ### Used technologies:
 
 - MySQL
-- Docker
+- Docker with docker-compose
 - Apache Airflow
 - Tankerkoenig API
 - Python 
