@@ -6,7 +6,7 @@ Therefore I have developed this containerized application, consisting of an etl-
 
 ### Architecture
 
-
+![](https://github.com/dominikhei/petrol_prices/blob/master/images/petrol.png)
 
 ### Used technologies:
 
