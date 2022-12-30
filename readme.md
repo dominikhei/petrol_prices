@@ -30,7 +30,7 @@ To extract, transform and load the data I am using airflow. The dag will be exec
 
 __INSERT IMAGE OF THE DASHBOARD__
 
-As already stated it was also important to me to present my findings in a simple and concise manner. I figured the best solution would be a web dashboard which can be accessed via the hosts 8501 port in your browser under: http://0.0.0.0:8501 .
+As already stated it was also important to me to present my findings in a simple and concise manner. I figured the best solution would be a web dashboard which can be accessed via the hosts 8501 port in your browser under: http://localhost:8501/ due to port mapping.
 Just like the rest it will be automatically executed with docker-compose once you "start" the whole application.  The Dashboard present insights on the following questions:
 
 - Price distribution overt the day (average of last 7 days used)

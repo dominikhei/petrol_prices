@@ -125,11 +125,11 @@ def establish_db_connection():
     try:
         global cnx
         global db_cursor
-        cnx = mysql.connector.connect(user='____',
-                                      password='___',
+        cnx = mysql.connector.connect(user='root',
+                                      password='_____',
                                       host='host.docker.internal',
                                       port='3308',
-                                      database='___')
+                                      database='_____')
         db_cursor = cnx.cursor()
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:

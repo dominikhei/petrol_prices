@@ -3,7 +3,6 @@ import mysql.connector
 from mysql.connector import errorcode
 import matplotlib.pyplot as plt
 import numpy as np
-from secret_variables import *
 
 
 def establish_db_connection():
@@ -12,7 +11,7 @@ def establish_db_connection():
     global cnx
 
     try:
-        cnx = mysql.connector.connect(user="__",
+        cnx = mysql.connector.connect(user="root",
                                       password="___",
                                       host='host.docker.internal',
                                       port='3308',
