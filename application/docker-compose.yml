@@ -1,0 +1,29 @@
+services:
+  pythonapp:
+    build: ./loading_script/
+    command: sh -c "sleep 240s ; python3 ./load_data.py"
+    depends_on:
+      - mysql
+
+
+  mysql:
+    image: mysql:8.0
+    command: --init-file /var/lib/create_table.sql
+    volumes:
+    - "./database://var/lib:rw"
+    environment:
+      MYSQL_ROOT_PASSWORD: ______
+      MYSQL_DATABASE: ______
+    ports:
+      - "3308:3306"
+
+
+  dashboard:
+    build: ./dashboard/
+    ports:
+        - "8501:8501"
+    depends_on:
+      - mysql
+      - pythonapp
+
+

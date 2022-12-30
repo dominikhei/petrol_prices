@@ -1,0 +1,6 @@
+streamlit==1.9.0
+pandas
+protobuf
+mysql-connector-python
+matplotlib
+numpy
