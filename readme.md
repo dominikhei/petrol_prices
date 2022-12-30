@@ -43,13 +43,13 @@ The Docker image is built with streamlit version 1.9.0, because the newest one d
 
 ### Etl functions
 
-The data on the petrol prices is being fetched from an API [link hinzufügen]. Once it is returned, i transform the format from JSON to a pandas dataframe and drop columns I do not need, as well as checking for Na's, duplicates and values that do not make sense. The remaining rows will then be loaded into a MySQL table. __The get-request and the data transformations will be tested beforehand__
+The data on the petrol prices is being fetched from an [Api](https://creativecommons.tankerkoenig.de). Once it is returned, i transform the format from JSON to a pandas dataframe and drop columns I do not need, as well as checking for Na's, duplicates and values that do not make sense. The remaining rows will then be loaded into a MySQL table. __The get-request and the data transformations will be tested beforehand__
 
 **Tests**
 
 Before the api request will be made, I am executing an integration test, which tests for two things:
 - Response code from the api
-- Wheter the returned data in Json format meets the expected format (aka.   has the same keys at the same places), with the validate function from the jsonschema package. 
+- Wheter the returned data in Json format meets the expected format (aka.has the same keys at the same places), with the validate function from the jsonschema package. The Json schema for the test can be found [here](https://github.com/dominikhei/petrol_prices/blob/master/application/loading_script/api_schema.py)
 When these tests are successfull the actual request will be made. If not, the script terminates.
 
 In advance of the transformations with the returned data from the api, a unit test for the transformation function will be executed. There the transformation function will be called on a sample dataframe, which has all the flaws for which the function checks. If it meets an expected outcome after the transformation, the test was succesfull and the function will be called on the actual data. If not, the script terminates. 
@@ -61,11 +61,11 @@ All of them are bundled into one main function, which is protected from being in
 ### Deployment using Docker
 
 I have used docker for the project to ensure that it runs on every machine. 
-Since the application consists of 3 services, it is built as a multi-container application with docker-compose. The 3 different services are defined in the [docker-compose.yml] file. It can be executed by navigating into the [application] folder via the command line and there using the command: docker-compose up, which builds the three images and starts containers based on these simultainously.
+Since the application consists of 3 services, it is built as a multi-container application with docker-compose. The 3 different services are defined in the [docker-compose.yml](https://github.com/dominikhei/petrol_prices/blob/master/application/docker-compose.yml) file. It can be executed by navigating into the [application](https://github.com/dominikhei/petrol_prices/tree/master/application) folder via the command line and there using the command: docker-compose up, which builds the three images and starts containers based on these simultainously.
 
 
 # How to run the project on your machine 
 
-To run the project on your machine, you need docker and Apache-Airflow installed and a token for the [Tankerkoenig Api]. 
-The Api token can be obtained [here]
-The dag from the [airflow_dag] folder has to be moved into Airflows dags folder. Once that has been done you should navigate into the [application] folder and execute the docker-compose up command once. All three services will be started from there. 
+To run the project on your machine, you need docker and Apache-Airflow installed and a token for the Tankerkoenig Api. 
+The Api token can be obtained [here](https://creativecommons.tankerkoenig.de)
+The dag from the [airflow_dag](https://github.com/dominikhei/petrol_prices/blob/master/airflow_dag/petrol_etl_dag.py) folder has to be moved into Airflows dags folder. Once that has been done you should navigate into the [application](https://github.com/dominikhei/petrol_prices/tree/master/application) folder and execute the docker-compose up command once. All three services will be started from there. 
